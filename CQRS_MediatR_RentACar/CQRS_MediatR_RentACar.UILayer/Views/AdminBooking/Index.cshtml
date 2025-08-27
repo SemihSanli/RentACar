@@ -1,0 +1,70 @@
+﻿@model List<GetBookingWithCarNameQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 grid-margin stretch-card">
+        <div class="card shadow-lg border-0" style="background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.30)); backdrop-filter: blur(6px); border-radius: 20px;">
+            <div class="card-body overflow-auto">
+                <h4 class="card-title text-gradient-violet">Rezervasyon Geçmişi 🚗</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" style="border-color: rgba(255,255,255,.45);">
+                        <thead style="background: linear-gradient(90deg, #4B3F95, #6A59C8); color:white;">
+                            <tr>
+                                <th>Model</th>
+                                <th>Brand</th>
+                                <th>Pick-Up Date</th>
+                                <th>Drop-Off Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr style="background: linear-gradient(90deg, #E7DFEE, #C5D6E6); color: #0F172A; font-weight: 600;">
+                                    <td>@x.CarModel</td>
+                                    <td>@x.CarBrand</td>
+                                    <td>@x.PickUpDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@x.DropOffDate.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-gradient-violet {
+        background: linear-gradient(90deg, #4B3F95, #6A59C8, #FF4FAE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 900;
+    }
+
+    .table-hover tbody tr:hover {
+        background: linear-gradient(90deg, #79B1D3, #C5D6E6) !important;
+        transform: scale(1.01);
+        transition: all 0.2s;
+    }
+
+    table th, table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    table th {
+        font-weight: 800;
+        letter-spacing: .5px;
+    }
+
+    body {
+        background: radial-gradient(1000px 700px at 10% 0%, rgba(75,63,149,.10), transparent 60%), radial-gradient(900px 600px at 100% 20%, rgba(106,89,200,.10), transparent 60%), linear-gradient(180deg, #E7DFEE 0%, #C5D6E6 50%, #79B1D3 100%);
+        color: #0F172A;
+        min-height: 100vh;
+    }
+
+</style>

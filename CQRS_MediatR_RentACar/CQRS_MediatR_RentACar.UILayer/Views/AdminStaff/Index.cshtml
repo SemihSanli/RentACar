@@ -1,0 +1,159 @@
+﻿@model List<GetStaffQueryResult>
+@{
+	ViewData["Title"] = "Personel";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-4 py-3">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h1 class="h5 mb-0">Personel (@(Model?.Count ?? 0))</h1>
+		<a class="btn btn-primary" href="/AdminStaff/AddStaff/">
+			<i class="fas fa-plus me-2"></i>Yeni Personel
+		</a>
+	</div>
+
+	@if (Model == null || !Model.Any())
+	{
+		<div class="alert alert-info mb-0">Kayıt bulunamadı.</div>
+	}
+	else
+	{
+		<div class="row g-4">
+			@foreach (var s in Model)
+			{
+				<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+					<div class="card staff-card h-100 border-0 shadow-sm">
+						<div class="staff-image-wrapper">
+							@if (!string.IsNullOrWhiteSpace(s.StaffImageURL))
+							{
+								<img src="@s.StaffImageURL"
+									 alt="@s.StaffFullName"
+									 class="staff-image"
+									 loading="lazy"
+									 referrerpolicy="no-referrer" />
+							}
+							else
+							{
+								<div class="staff-image placeholder d-flex align-items-center justify-content-center">
+									<i class="fas fa-user fa-3x text-muted"></i>
+								</div>
+							}
+						</div>
+
+						<div class="card-body text-center">
+							<h6 class="mb-1">@s.StaffFullName</h6>
+							<div class="text-muted small mb-3">@s.StaffTitle</div>
+
+							<div class="d-flex justify-content-center gap-2 mb-3">
+								@if (!string.IsNullOrWhiteSpace(s.StaffFacebook))
+								{
+									<a href="@s.StaffFacebook" class="btn btn-light btn-sm icon-btn" target="_blank" rel="noopener noreferrer" title="Facebook">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+								}
+								@if (!string.IsNullOrWhiteSpace(s.StaffInstagram))
+								{
+									<a href="@s.StaffInstagram" class="btn btn-light btn-sm icon-btn" target="_blank" rel="noopener noreferrer" title="Instagram">
+										<i class="fab fa-instagram"></i>
+									</a>
+								}
+								@if (!string.IsNullOrWhiteSpace(s.StaffX))
+								{
+									<a href="@s.StaffX" class="btn btn-light btn-sm icon-btn" target="_blank" rel="noopener noreferrer" title="X">
+										<i class="fab fa-x-twitter"></i>
+									</a>
+								}
+								@if (!string.IsNullOrWhiteSpace(s.StaffLinkedin))
+								{
+									<a href="@s.StaffLinkedin" class="btn btn-light btn-sm icon-btn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+										<i class="fab fa-linkedin-in"></i>
+									</a>
+								}
+							</div>
+
+							<div class="d-grid gap-2">
+								<a class="btn btn-outline-primary btn-sm" href="/AdminStaff/UpdateStaff/@s.StaffID">
+									<i class="fas fa-edit me-1"></i>Güncelle
+								</a>
+								<a class="btn btn-outline-danger btn-sm"
+								   href="/AdminStaff/DeleteStaff/@s.StaffID"
+								   onclick="return confirm('Bu personeli silmek istediğinize emin misiniz?');">
+									<i class="fas fa-trash me-1"></i>Sil
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+</div>
+
+<style>
+	/* Kart estetiği */
+	.staff-card {
+		border-radius: 14px;
+		overflow: hidden;
+		transition: box-shadow .25s ease, transform .25s ease;
+	}
+
+		.staff-card:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 12px 28px rgba(0,0,0,.10);
+		}
+
+	/* Görsel kapsayıcı: orantıyı sabitler, taşanı zarifçe kırpar */
+	.staff-image-wrapper {
+		aspect-ratio: 16 / 9; /* 16:9 sabit oran */
+		width: 100%;
+		background: #f3f4f6;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Görsel: kaliteyi koru, ortadan kırp */
+	.staff-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		transition: transform .35s ease, filter .35s ease;
+	}
+
+	.staff-card:hover .staff-image {
+		transform: scale(1.04);
+		filter: contrast(1.03) saturate(1.02);
+	}
+
+	/* Placeholder yüksekliği oranla uyumlu kalsın */
+	.staff-image.placeholder {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Sosyal ikon butonları */
+	.icon-btn {
+		width: 36px;
+		height: 36px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 8px;
+	}
+
+	/* Mobil: biraz daha dik oran ver */
+	@@media (max-width: 768px) {
+		.staff-image-wrapper
+
+	{
+		aspect-ratio: 16 / 10;
+	}
+
+	}
+
+</style>
+
+@section Scripts {
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}

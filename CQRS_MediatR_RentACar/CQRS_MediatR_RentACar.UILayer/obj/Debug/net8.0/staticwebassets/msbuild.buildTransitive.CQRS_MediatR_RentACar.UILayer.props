@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CQRS_MediatR_RentACar.UILayer.props" />
+</Project>

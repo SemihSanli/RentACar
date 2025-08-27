@@ -1,0 +1,16 @@
+﻿using CQRS_MediatR_RentACar.EntityLayer;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CQRS_MediatR_RentACar.DataAccessLayer.Abstract
+{
+    public interface ICarDal:IGenericDal<Car>
+    {
+        Task<List<Car>> GetCarsByBrandAsync(string carBrand);
+        Task<List<Car>> GetLast4CarAsync();
+        Task<int> GetCarCount();
+    }
+}

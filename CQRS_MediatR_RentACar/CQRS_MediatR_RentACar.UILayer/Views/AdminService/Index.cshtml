@@ -1,0 +1,106 @@
+﻿@model List<GetServiceQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container-fluid px-4 py-3">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h1 class="h5 mb-0">Servisler (@(Model?.Count ?? 0))</h1>
+		<a class="btn btn-primary" href="/AdminService/AddService/">
+			<i class="fas fa-plus me-2"></i>Yeni Servis
+		</a>
+	</div>
+
+	@if (Model == null || !Model.Any())
+	{
+		<div class="alert alert-info">Kayıt bulunamadı.</div>
+	}
+	else
+	{
+		<div class="card shadow-sm">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="servicesTable" class="table table-hover align-middle w-100">
+						<thead class="table-light">
+							<tr>
+								<th style="width:80px;">ID</th>
+								<th style="width:64px;">İkon</th>
+								<th>Giriş Başlığı</th>
+								<th>Makale Başlığı</th>
+								<th>Açıklama</th>
+								<th style="width:220px;">İşlemler</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var s in Model)
+							{
+								<tr>
+									<td>@s.ServiceID</td>
+									<td>
+										@if (!string.IsNullOrWhiteSpace(s.ServiceIconURL))
+										{
+											<img src="@s.ServiceIconURL" alt="icon" style="width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #eee;" />
+										}
+									</td>
+									<td>@s.ServiceEntryTitle</td>
+									<td>@s.ServiceArticleTitle</td>
+									<td>
+										<div class="clamp-2" title="@s.ServiceArticleDescription">@s.ServiceArticleDescription</div>
+									</td>
+									<td>
+										<div class="btn-group btn-group-sm" role="group">
+											<a class="btn btn-outline-primary" href="/AdminService/UpdateService/@s.ServiceID">
+												<i class="fas fa-edit me-1"></i>Güncelle
+											</a>
+											<a class="btn btn-outline-danger"
+											   href="/AdminService/DeleteService/@s.ServiceID"
+											   onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">
+												<i class="fas fa-trash me-1"></i>Sil
+											</a>
+										</div>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+				<small class="text-muted">Arama kutusunu kullanabilir, sütun başlıklarına tıklayarak sıralayabilirsiniz.</small>
+			</div>
+		</div>
+	}
+</div>
+
+<style>
+	.clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
+
+@section Scripts {
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" />
+	<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+	<script>
+		$(function () {
+			$('#servicesTable').DataTable({
+				deferRender: true,
+				pageLength: 25,
+				lengthMenu: [10, 25, 50, 100, 250, 500],
+				order: [[2, 'asc']],
+				language: { url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/tr.json' },
+				columnDefs: [
+					{ targets: [0], width: 80 },
+					{ targets: [1], orderable: false, searchable: false, width: 64 },
+					{ targets: [5], orderable: false, searchable: false, width: 220 }
+				]
+			});
+		});
+	</script>
+}
+

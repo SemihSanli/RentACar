@@ -1,0 +1,82 @@
+﻿@model List<GetStaffQueryResult>
+<div class="container-fluid team pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Güçlü<span class="text-primary"> Ekibimiz</span> </h1>
+            <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut amet nemo expedita asperiores commodi accusantium at cum harum, excepturi, quia tempora cupiditate! Adipisci facilis modi quisquam quia distinctio,
+            </p>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item card-elevate p-4 pt-0 h-100">
+                        <div class="team-img ratio-4x3">
+                            <img src="@item.StaffImageURL" class="img-fluid rounded w-100 h-100 object-cover" alt="@item.StaffFullName">
+                        </div>
+                        <div class="team-content pt-4 text-center">
+                            <h4 class="mb-1">@item.StaffFullName</h4>
+                            <p class="text-muted small mb-3">@item.StaffTitle</p>
+                            <div class="team-icon d-flex justify-content-center">
+                                <a class="btn btn-square btn-light rounded-circle mx-1" href="@item.StaffFacebook"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle mx-1" href="@item.StaffX"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle mx-1" href="@item.StaffInstagram"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle mx-1" href="@item.StaffLinkedin"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <style>
+        /* Sabit oranlı resim alanı: 4:3 (istersen 1:1 yap) */
+        .ratio-4x3 {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            border-radius: .75rem;
+            overflow: hidden;
+        }
+
+            .ratio-4x3 > img {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        /* Eğer utility istersen: */
+        .object-cover {
+            object-fit: cover;
+        }
+
+        /* Kart estetiği ve hover */
+        .card-elevate {
+            border-radius: 1rem;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(0,0,0,.06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+            .card-elevate:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 28px rgba(0,0,0,.12);
+            }
+
+        /* Başlıklar ve ikonlar */
+        .team-content h4 {
+            font-weight: 600;
+        }
+
+        .team-icon .btn {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</div>

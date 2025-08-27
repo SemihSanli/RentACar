@@ -1,0 +1,281 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CQRS_MediatR_RentACar.UILayer
+build_property.RootNamespace = CQRS_MediatR_RentACar.UILayer
+build_property.ProjectDir = H:\CQRS_MediatR_RentACar\CQRS_MediatR_RentACar.UILayer\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = H:\CQRS_MediatR_RentACar\CQRS_MediatR_RentACar.UILayer
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AboutUI/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVSVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminAbout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BYm91dFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminAbout/UpdateAbout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BYm91dFxVcGRhdGVBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminBooking/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Cb29raW5nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminCar/AddCar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5DYXJcQWRkQ2FyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminCar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5DYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminCar/UpdateCar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5DYXJcVXBkYXRlQ2FyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminContact/AddContact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db250YWN0XEFkZENvbnRhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminContact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db250YWN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminContact/UpdateContact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db250YWN0XFVwZGF0ZUNvbnRhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminLocation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Mb2NhdGlvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminService/AddService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlXEFkZFNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminService/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminService/UpdateService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlXFVwZGF0ZVNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminSlider/AddSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TbGlkZXJcQWRkU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminSlider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TbGlkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminSlider/UpdateSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TbGlkZXJcVXBkYXRlU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminStaff/AddStaff.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdGFmZlxBZGRTdGFmZi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminStaff/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdGFmZlxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminStaff/UpdateStaff.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdGFmZlxVcGRhdGVTdGFmZi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminTestimonial/AddTestimonial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UZXN0aW1vbmlhbFxBZGRUZXN0aW1vbmlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminTestimonial/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UZXN0aW1vbmlhbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/AdminTestimonial/UpdateTestimonial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UZXN0aW1vbmlhbFxVcGRhdGVUZXN0aW1vbmlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Airport/AirportList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlycG9ydFxBaXJwb3J0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Airport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlycG9ydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/BrowseCar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlQ2FyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/CarRecommendationAI/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyUmVjb21tZW5kYXRpb25BSVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/CarRecommendationAI/RecommendedCarList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyUmVjb21tZW5kYXRpb25BSVxSZWNvbW1lbmRlZENhckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Fuel/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVlbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Location/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/MainPage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblBhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_AdminDashboardChartComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluRGFzaGJvYXJkQ2hhcnRDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_AdminDashboardCustomerStatisticComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluRGFzaGJvYXJkQ3VzdG9tZXJTdGF0aXN0aWNDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_AdminDashboardWidgetsComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluRGFzaGJvYXJkV2lkZ2V0c0NvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutBackToTopComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRCYWNrVG9Ub3BDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutCopyrightComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRDb3B5cmlnaHRDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutFooterComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRGb290ZXJDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutHeaderComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRIZWFkZXJDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutNavbarHeroComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXROYXZiYXJIZXJvQ29tcG9uZW50UGFydGlhbFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutScriptsComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRTY3JpcHRzQ29tcG9uZW50UGFydGlhbFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutSpinnerComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRTcGlubmVyQ29tcG9uZW50UGFydGlhbFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_MainLayoutTopBarComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX01haW5MYXlvdXRUb3BCYXJDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIAboutComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQWJvdXRDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIBookingOptionsComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQm9va2luZ09wdGlvbnNDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UICarCategoryComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQ2FyQ2F0ZWdvcnlDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UICarouselComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQ2Fyb3VzZWxDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIContactComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQ29udGFjdENvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIContactSendMessageComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJQ29udGFjdFNlbmRNZXNzYWdlQ29tcG9uZW50UGFydGlhbFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIFactComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJRmFjdENvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIFeatureComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJRmVhdHVyZUNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UIServiceComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJU2VydmljZUNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UITeamComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJVGVhbUNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Components/_UITestimonialComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX1VJVGVzdGltb25pYWxDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/_MainLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWluTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/CQRS_MediatR_RentACar/CQRS_MediatR_RentACar.UILayer/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bwdwouzfhl

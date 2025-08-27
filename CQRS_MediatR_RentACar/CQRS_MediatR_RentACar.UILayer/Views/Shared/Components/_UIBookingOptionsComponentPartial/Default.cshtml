@@ -1,0 +1,37 @@
+﻿@using CQRS_MediatR_RentACar.BusinessLayer.CQRS_MediatR.Results.CarResults
+@model List<GetCarQueryResult>
+
+<div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+    <div class="bg-secondary rounded p-5">
+        <h4 class="text-white mb-4">Araç Markası Seçiniz</h4>
+        <form asp-controller="BrowseCar" asp-action="Index" method="post">
+            <div class="row g-3">
+                <div class="col-12">
+                    @Html.DropDownList(
+                             "selectedBrand",
+                             (SelectList)ViewBag.Brands,
+                             "Select a Brand",
+                             new { @class = "form-control" })
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-light w-100 py-2" type="submit">Show Cars</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="mt-4">
+        <h5 class="text-white mb-3">Available Cars:</h5>
+        <ul class="list-group">
+            @foreach (var car in Model)
+            {
+                <li class="list-group-item">
+                    <strong>@car.CarBrand @car.CarModel</strong> - Price: @car.CarPrice $
+                </li>
+            }
+        </ul>
+    </div>
+}

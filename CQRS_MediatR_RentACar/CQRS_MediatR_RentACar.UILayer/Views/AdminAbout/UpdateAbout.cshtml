@@ -1,0 +1,191 @@
+﻿@model GetAboutByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container-fluid px-4 py-4">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h1 class="h5 mb-0">Hakkımızda Güncelle (ID: @Model.AboutID)</h1>
+		<a class="btn btn-outline-secondary" href="@Url.Action("Index","AdminAbout")">
+			<i class="fas fa-arrow-left me-2"></i>Listeye Dön
+		</a>
+	</div>
+
+	<form asp-action="Edit" asp-controller="AdminAbout" method="post" novalidate>
+		@Html.AntiForgeryToken()
+		<input type="hidden" asp-for="AboutID" />
+
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card shadow-sm mb-4">
+					<div class="card-header bg-white">
+						<strong>Genel Bilgiler</strong>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">Kısa Açıklama</label>
+							<textarea asp-for="AboutDescription" class="form-control" rows="3" placeholder="Kısa açıklama"></textarea>
+							<span class="text-danger" asp-validation-for="AboutDescription"></span>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Alt Açıklama</label>
+							<textarea asp-for="AboutSubDescription" class="form-control" rows="3" placeholder="Alt açıklama"></textarea>
+							<span class="text-danger" asp-validation-for="AboutSubDescription"></span>
+						</div>
+
+						<div class="row g-3">
+							<div class="col-md-4">
+								<label class="form-label">Madde 1</label>
+								<input asp-for="AboutArticle1" class="form-control" placeholder="Örn. Güvenilir hizmet" />
+								<span class="text-danger" asp-validation-for="AboutArticle1"></span>
+							</div>
+							<div class="col-md-4">
+								<label class="form-label">Madde 2</label>
+								<input asp-for="AboutArticle2" class="form-control" placeholder="Örn. Geniş araç filosu" />
+								<span class="text-danger" asp-validation-for="AboutArticle2"></span>
+							</div>
+							<div class="col-md-4">
+								<label class="form-label">Madde 3</label>
+								<input asp-for="AboutArticle3" class="form-control" placeholder="Örn. 7/24 destek" />
+								<span class="text-danger" asp-validation-for="AboutArticle3"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+					<div class="card-header bg-white">
+						<strong>Layer İçerikleri</strong>
+					</div>
+					<div class="card-body">
+						<div class="row g-3">
+							<div class="col-md-6">
+								<label class="form-label">Layer Başlık</label>
+								<input asp-for="AboutLayerTitle" class="form-control" placeholder="Layer başlığı" />
+								<span class="text-danger" asp-validation-for="AboutLayerTitle"></span>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Layer Açıklama</label>
+								<input asp-for="AboutLayerDescription" class="form-control" placeholder="Layer açıklaması" />
+								<span class="text-danger" asp-validation-for="AboutLayerDescription"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card shadow-sm mb-4">
+					<div class="card-header bg-white">
+						<strong>CEO Bilgileri</strong>
+					</div>
+					<div class="card-body">
+						<div class="row g-3">
+							<div class="col-md-6">
+								<label class="form-label">CEO Ünvan</label>
+								<input asp-for="AboutCeoTitle" class="form-control" placeholder="Örn. CEO" />
+								<span class="text-danger" asp-validation-for="AboutCeoTitle"></span>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">CEO Ad Soyad</label>
+								<input asp-for="AboutCeoFullName" class="form-control" placeholder="Örn. Ahmet Yılmaz" />
+								<span class="text-danger" asp-validation-for="AboutCeoFullName"></span>
+							</div>
+							<div class="col-12">
+								<label class="form-label">CEO Görsel URL</label>
+								<input asp-for="AboutCeoImageURL" id="ceoUrl" class="form-control" placeholder="https://..." />
+								<span class="text-danger" asp-validation-for="AboutCeoImageURL"></span>
+								<div class="mt-2">
+									<div class="ratio ratio-4x3 border rounded d-flex align-items-center justify-content-center bg-light">
+										<img id="ceoPreview" src="@Model.AboutCeoImageURL" alt="CEO Önizleme" style="max-width:100%;max-height:100%;object-fit:cover;display:@(string.IsNullOrWhiteSpace(Model.AboutCeoImageURL) ? "none" : "block");" />
+										<div id="ceoPlaceholder" class="text-muted" style="display:@(string.IsNullOrWhiteSpace(Model.AboutCeoImageURL) ? "block" : "none");">Önizleme yok</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="d-flex gap-2">
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save me-2"></i>Kaydet
+					</button>
+					<a href="@Url.Action("Index","AdminAbout")" class="btn btn-light">İptal</a>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="card shadow-sm mb-4">
+					<div class="card-header bg-white">
+						<strong>İkon</strong>
+					</div>
+					<div class="card-body">
+						<label class="form-label">İkon URL</label>
+						<input asp-for="AboutIconURL" id="iconUrl" class="form-control" placeholder="https://..." />
+						<span class="text-danger" asp-validation-for="AboutIconURL"></span>
+						<div class="mt-2 d-flex align-items-center gap-3">
+							<div class="rounded-circle overflow-hidden border bg-light" style="width:72px;height:72px;">
+								<img id="iconPreview" src="@Model.AboutIconURL" alt="İkon Önizleme" style="width:100%;height:100%;object-fit:cover;display:@(string.IsNullOrWhiteSpace(Model.AboutIconURL) ? "none" : "block");" />
+							</div>
+							<small id="iconPlaceholder" class="text-muted" style="display:@(string.IsNullOrWhiteSpace(Model.AboutIconURL) ? "block" : "none");">Önizleme yok</small>
+						</div>
+					</div>
+				</div>
+
+				<div class="card shadow-sm">
+					<div class="card-header bg-white">
+						<strong>Kapak Görseli</strong>
+					</div>
+					<div class="card-body">
+						<label class="form-label">Büyük Görsel URL</label>
+						<input asp-for="AboutBigImageURL" id="bigUrl" class="form-control" placeholder="https://..." />
+						<span class="text-danger" asp-validation-for="AboutBigImageURL"></span>
+						<div class="mt-2">
+							<div class="ratio ratio-16x9 border rounded d-flex align-items-center justify-content-center bg-light">
+								<img id="bigPreview" src="@Model.AboutBigImageURL" alt="Büyük Görsel Önizleme" style="max-width:100%;max-height:100%;object-fit:cover;display:@(string.IsNullOrWhiteSpace(Model.AboutBigImageURL) ? "none" : "block");" />
+								<div id="bigPlaceholder" class="text-muted" style="display:@(string.IsNullOrWhiteSpace(Model.AboutBigImageURL) ? "block" : "none");">Önizleme yok</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+		(function () {
+			function bindPreview(inputId, imgId, phId) {
+				const input = document.getElementById(inputId);
+				const img = document.getElementById(imgId);
+				const ph = document.getElementById(phId);
+				if (!input || !img || !ph) return;
+
+				function update() {
+					const v = (input.value || '').trim();
+					if (!v) {
+						img.style.display = 'none';
+						ph.style.display = 'block';
+						img.removeAttribute('src');
+						return;
+					}
+					img.src = v;
+					img.onload = () => { img.style.display = 'block'; ph.style.display = 'none'; };
+					img.onerror = () => { img.style.display = 'none'; ph.style.display = 'block'; };
+				}
+				input.addEventListener('input', update);
+				update();
+			}
+
+			bindPreview('iconUrl', 'iconPreview', 'iconPlaceholder');
+			bindPreview('bigUrl', 'bigPreview', 'bigPlaceholder');
+			bindPreview('ceoUrl', 'ceoPreview', 'ceoPlaceholder');
+		})();
+	</script>
+}
+

@@ -1,0 +1,161 @@
+﻿@model GetCarByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid px-4 py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h5 mb-0">Araç Güncelle (ID: @Model.CarID)</h1>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index","AdminCar")">
+            <i class="fas fa-arrow-left me-2"></i>Listeye Dön
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <form asp-action="UpdateCar" asp-controller="AdminCar" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="CarID" />
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Marka</label>
+                                <input asp-for="CarBrand" class="form-control" placeholder="Örn. BMW" required />
+                                <span class="text-danger" asp-validation-for="CarBrand"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Model</label>
+                                <input asp-for="CarModel" class="form-control" placeholder="Örn. 320i" required />
+                                <span class="text-danger" asp-validation-for="CarModel"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Günlük Fiyat (₺)</label>
+                                <input asp-for="CarPrice" type="number" step="0.01" min="0" class="form-control" placeholder="Örn. 1500" required />
+                                <span class="text-danger" asp-validation-for="CarPrice"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Puan (0-5)</label>
+                                <input asp-for="CarReview" type="number" step="0.1" min="0" max="5" class="form-control" placeholder="Örn. 4.5" />
+                                <span class="text-danger" asp-validation-for="CarReview"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Yakıt Türü</label>
+                                <select asp-for="CarFuel" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option>Benzin</option>
+                                    <option>Dizel</option>
+                                    <option>LPG</option>
+                                    <option>Elektrik</option>
+                                    <option>Hibrit</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="CarFuel"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Vites</label>
+                                <select asp-for="CarTransmission" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option>Otomatik</option>
+                                    <option>Manuel</option>
+                                    <option>Yarı Otomatik</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="CarTransmission"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Yıl</label>
+                                <input asp-for="CarYear" class="form-control" placeholder="Örn. 2022" />
+                                <span class="text-danger" asp-validation-for="CarYear"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">KM</label>
+                                <input asp-for="CarKM" class="form-control" placeholder="Örn. 45.000" />
+                                <span class="text-danger" asp-validation-for="CarKM"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Koltuk</label>
+                                <input asp-for="CarSeat" class="form-control" placeholder="Örn. 5" />
+                                <span class="text-danger" asp-validation-for="CarSeat"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Otomatik/Manuel</label>
+                                <select asp-for="IsAutoOrManual" class="form-select">
+                                    <option>Otomatik</option>
+                                    <option>Manuel</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="IsAutoOrManual"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Görsel URL</label>
+                                <input asp-for="CarImageURL" id="imgUrl" class="form-control" placeholder="https://..." />
+                                <span class="text-danger" asp-validation-for="CarImageURL"></span>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Kaydet
+                            </button>
+                            <a href="@Url.Action("Index","AdminCar")" class="btn btn-light">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Görsel Önizleme -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <strong>Görsel Önizleme</strong>
+                </div>
+                <div class="card-body">
+                    <div class="ratio ratio-16x9 border rounded d-flex align-items-center justify-content-center bg-light">
+                        <img id="previewImg"
+                             src="@Model.CarImageURL"
+                             alt="Önizleme"
+                             style="max-width:100%;max-height:100%;object-fit:cover;display:@(string.IsNullOrWhiteSpace(Model.CarImageURL) ? "none" : "block");" />
+                        <div id="previewPlaceholder" class="text-muted"
+                             style="display:@(string.IsNullOrWhiteSpace(Model.CarImageURL) ? "block" : "none");">
+                            Henüz görsel yok
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        Yatay, yüksek çözünürlüklü görsel önerilir.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function(){
+            const urlInput = document.getElementById('imgUrl');
+            const img = document.getElementById('previewImg');
+            const ph = document.getElementById('previewPlaceholder');
+
+            function update(){
+                const v = (urlInput.value || '').trim();
+                if(!v){
+                    img.style.display='none'; ph.style.display='block'; img.removeAttribute('src'); return;
+                }
+                img.src = v;
+                img.onload = () => { img.style.display='block'; ph.style.display='none'; };
+                img.onerror = () => { img.style.display='none'; ph.style.display='block'; };
+            }
+            if(urlInput){ urlInput.addEventListener('input', update); update(); }
+        })();
+    </script>
+}
+

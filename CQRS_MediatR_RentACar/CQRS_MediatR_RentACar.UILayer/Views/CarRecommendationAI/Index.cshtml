@@ -1,0 +1,472 @@
+﻿@{
+    ViewData["Title"] = "Araç Önerisi AI";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    :root {
+        --bg-top: #E7DFEE; /* üst arka plan */
+        --bg-mid: #C5D6E6; /* orta arka plan */
+        --bg-bot: #79B1D3; /* alt arka plan */
+        --ink: #0F172A; /* birincil metin */
+        --ink-2: #475569; /* ikincil metin */
+        --line: #E2E8F0; /* ayıraç/çizgi */
+        --violet: #4B3F95; /* ikon/vurgu moru */
+        --violet-2: #6A59C8; /* açık mor */
+        --pink: #FF4FAE; /* rozet/CTA pembe */
+        --glass: rgba(255,255,255,.55);
+        --glass-2: rgba(255,255,255,.30);
+        --shadow: 0 16px 60px rgba(16,24,40,.15);
+    }
+
+    /* Sayfa arka planı + kılavuz çizgiler */
+    .ai-form-viewport {
+        min-height: 100vh;
+        background: radial-gradient(1000px 700px at 10% 0%, rgba(75,63,149,.10), transparent 60%), radial-gradient(900px 600px at 100% 20%, rgba(106,89,200,.10), transparent 60%), linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+        color: var(--ink);
+        position: relative;
+        overflow-x: hidden;
+        isolation: isolate;
+    }
+    /* Form grupları */
+    .form-group-custom {
+        margin-bottom: 32px;
+    }
+
+    .form-label-custom {
+        color: var(--violet);
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: 0.3px;
+    }
+
+    .form-control-custom {
+        background: rgba(255,255,255,.8);
+        border: 2px solid rgba(255,255,255,.4);
+        border-radius: 16px;
+        padding: 20px 24px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink);
+        transition: all .3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: 100%; /* Tam genişlik */
+        min-height: 120px; /* Minimum yükseklik */
+        resize: vertical; /* Sadece dikey boyutlandırma */
+    }
+
+        .form-control-custom:focus {
+            background: rgba(255,255,255,.95);
+            border-color: var(--violet);
+            box-shadow: 0 0 0 4px rgba(75,63,149,.15);
+            outline: none;
+        }
+
+        .form-control-custom::placeholder {
+            color: var(--ink-2);
+            opacity: 0.7;
+        }
+
+    /* Textarea için özel stiller */
+    textarea.form-control-custom {
+        min-height: 150px; /* Daha yüksek başlangıç yüksekliği */
+        max-height: 300px; /* Maksimum yükseklik */
+        overflow-y: auto; /* Dikey scroll */
+    }
+
+    .form-text-custom {
+        color: var(--ink-2);
+        font-size: 0.9rem;
+        margin-top: 12px;
+        font-style: italic;
+        opacity: 0.8;
+    }
+    .grid-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: .06;
+        z-index: 0;
+        background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 56px 56px, 56px 56px;
+        mask-image: radial-gradient(1200px 900px at 50% 20%, #000, transparent);
+    }
+
+    /* Başlık */
+    .ai-form-header {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 56px 0 20px;
+    }
+
+    .ai-form-title {
+        font-weight: 900;
+        letter-spacing: .6px;
+        margin: 0;
+        font-size: clamp(28px,3.8vw,48px);
+        background: linear-gradient(90deg, var(--violet), var(--violet-2), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 8px 40px rgba(75,63,149,.35);
+    }
+
+    .ai-form-sub {
+        color: var(--ink-2);
+        margin-top: 8px;
+        font-size: 1.1rem;
+    }
+
+    /* Ana form container */
+    .ai-form-container {
+        position: relative;
+        z-index: 1;
+        width: min(800px, 94%);
+        margin: 0 auto;
+        padding: 28px 0 96px;
+    }
+
+    /* Form kartı */
+    .ai-form-card {
+        background: linear-gradient(180deg, var(--glass), var(--glass-2));
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,.45);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+        .ai-form-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(16,24,40,.25);
+        }
+
+    .ai-form-card-header {
+        background: linear-gradient(90deg, var(--violet), var(--violet-2));
+        color: white;
+        padding: 32px 40px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+
+    .ai-form-card-title {
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    .ai-form-card-body {
+        padding: 40px;
+    }
+
+    /* Alert mesajları */
+    .alert-custom {
+        border: none;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-bottom: 28px;
+        font-weight: 600;
+        backdrop-filter: blur(8px);
+    }
+
+    .alert-success-custom {
+        background: linear-gradient(135deg, rgba(34,197,94,.15), rgba(34,197,94,.08));
+        color: #166534;
+        border-left: 4px solid #22c55e;
+    }
+
+    .alert-danger-custom {
+        background: linear-gradient(135deg, rgba(239,68,68,.15), rgba(239,68,68,.08));
+        color: #dc2626;
+        border-left: 4px solid #ef4444;
+    }
+
+    .alert-icon {
+        margin-right: 12px;
+        font-size: 1.1rem;
+    }
+
+    /* Form grupları */
+    .form-group-custom {
+        margin-bottom: 32px;
+    }
+
+    .form-label-custom {
+        color: var(--violet);
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: 0.3px;
+    }
+
+    .form-control-custom {
+        background: rgba(255,255,255,.8);
+        border: 2px solid rgba(255,255,255,.4);
+        border-radius: 16px;
+        padding: 20px 24px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink);
+        transition: all .3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .form-control-custom:focus {
+            background: rgba(255,255,255,.95);
+            border-color: var(--violet);
+            box-shadow: 0 0 0 4px rgba(75,63,149,.15);
+            outline: none;
+        }
+
+        .form-control-custom::placeholder {
+            color: var(--ink-2);
+            opacity: 0.7;
+        }
+
+    .form-text-custom {
+        color: var(--ink-2);
+        font-size: 0.9rem;
+        margin-top: 12px;
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    /* Submit butonu */
+    .btn-submit-custom {
+        background: linear-gradient(90deg, var(--violet), var(--violet-2));
+        border: none;
+        color: white;
+        padding: 20px 40px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+        box-shadow: 0 12px 32px rgba(75,63,149,.25);
+        transition: all .3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+        .btn-submit-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(106,89,200,.35);
+            background: linear-gradient(90deg, var(--violet-2), var(--pink));
+        }
+
+        .btn-submit-custom:active {
+            transform: translateY(-1px);
+        }
+
+    /* Nasıl çalışır bölümü */
+    .how-it-works {
+        margin-top: 48px;
+        padding: 32px;
+        background: rgba(255,255,255,.4);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,.3);
+    }
+
+    .how-it-works-title {
+        color: var(--violet);
+        font-weight: 800;
+        font-size: 1.3rem;
+        margin-bottom: 24px;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+    .features-list-custom {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 16px;
+    }
+
+        .features-list-custom li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.4);
+            transition: all .3s ease;
+        }
+
+            .features-list-custom li:hover {
+                background: rgba(255,255,255,.8);
+                transform: translateX(8px);
+                box-shadow: 0 8px 20px rgba(16,24,40,.1);
+            }
+
+    .feature-icon-custom {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--violet), var(--violet-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+
+    .features-list-custom li:nth-child(2) .feature-icon-custom {
+        background: linear-gradient(135deg, var(--pink), #f093fb);
+    }
+
+    .features-list-custom li:nth-child(3) .feature-icon-custom {
+        background: linear-gradient(135deg, var(--violet-2), #4facfe);
+    }
+
+    .feature-text-custom {
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .feature-number {
+        color: var(--violet);
+        font-weight: 800;
+        margin-right: 8px;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .ai-form-title
+
+    {
+        font-size: 2rem;
+    }
+
+    .ai-form-card-body {
+        padding: 24px;
+    }
+
+    .ai-form-card-header {
+        padding: 24px;
+    }
+
+    .form-control-custom {
+        padding: 16px 20px;
+    }
+
+    .btn-submit-custom {
+        padding: 18px 32px;
+        font-size: 1rem;
+    }
+
+    .how-it-works {
+        padding: 24px;
+    }
+
+    }
+</style>
+
+<div class="ai-form-viewport">
+    <div class="grid-lines"></div>
+
+    <div class="ai-form-header">
+        <h1 class="ai-form-title">�� Araç Önerisi AI</h1>
+        <div class="ai-form-sub">Yapay zeka ile kişiselleştirilmiş araç önerileri alın</div>
+    </div>
+
+    <div class="ai-form-container">
+        <div class="ai-form-card">
+            <div class="ai-form-card-header">
+                <h3 class="ai-form-card-title">🚗 Araç İhtiyacınızı Belirtin</h3>
+            </div>
+
+            <div class="ai-form-card-body">
+                <!-- ViewBag ile başarı mesajı -->
+                @if (ViewBag.IsSuccess == true)
+                {
+                    <div class="alert alert-success-custom alert-dismissible fade show">
+                        <i class="fas fa-check-circle alert-icon"></i>
+                        @ViewBag.SuccessMessage
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+
+                <!-- ViewBag ile hata mesajı -->
+                @if (ViewBag.IsError == true)
+                {
+                    <div class="alert alert-danger-custom alert-dismissible fade show">
+                        <i class="fas fa-exclamation-triangle alert-icon"></i>
+                        @ViewBag.ErrorMessage
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+
+                <form method="post" action="@Url.Action("Index")">
+                    <div class="form-group-custom">
+                        <label for="customerPrompt" class="form-label-custom">
+                            <i class="fas fa-lightbulb"></i>
+                            Araç İhtiyacınızı Detaylı Açıklayın:
+                        </label>
+                        <textarea class="form-control-custom"
+                                  id="customerPrompt"
+                                  name="customerPrompt"
+                                  rows="6"
+                                  placeholder="Örnek: 4 kişilik aile için, şehir içi kullanım, bütçe dostu, güvenli araç arıyorum. Günlük kullanım için ideal olmalı, yakıt tasarruflu ve geniş bagajlı olsun..."
+                                  required></textarea>
+                        <div class="form-text-custom">
+                            🤖 Ne kadar detay verirseniz, AI o kadar iyi öneri yapabilir.
+                            Bütçe, kullanım amacı, aile büyüklüğü gibi bilgileri ekleyin.
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-submit-custom">
+                            🤖 AI'dan 3 Farklı Öneri Al
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Nasıl çalışır bölümü -->
+                <div class="how-it-works">
+                    <h5 class="how-it-works-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Nasıl Çalışır?
+                    </h5>
+                    <ul class="features-list-custom">
+                        <li>
+                            <div class="feature-icon-custom">1</div>
+                            <div class="feature-text-custom">
+                                <span class="feature-number">1.</span>
+                                <strong>Pratik Uzman:</strong> Bütçe dostu ve günlük kullanıma uygun araçlar
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon-custom">2</div>
+                            <div class="feature-text-custom">
+                                <span class="feature-number">2.</span>
+                                <strong>Premium Uzman:</strong> Lüks ve deneyim odaklı araç seçenekleri
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon-custom">3</div>
+                            <div class="feature-text-custom">
+                                <span class="feature-number">3.</span>
+                                <strong>Güvenlik Uzman:</strong> En yüksek güvenlik standartları ve konfor
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model List<GetAirportQueryResult>
+@{
+    ViewData["Title"] = "AirportList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container mt-4">
+	<h3>Anlaşmalı Havaalanlarımız</h3>
+
+	@if (TempData["msg"] != null || ViewBag.Message != null)
+	{
+		<div class="alert alert-success mb-3">
+			@(TempData["msg"] ?? ViewBag.Message)
+		</div>
+	}
+
+	@if (Model == null || !Model.Any())
+	{
+		<div class="alert alert-info">Gösterilecek havaalanı bulunamadı.</div>
+	}
+	else
+	{
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+			@foreach (var x in Model.Take(10))
+			{
+				<div class="col">
+					<div class="card h-100 shadow-sm">
+						<div class="card-body">
+							<h6 class="card-subtitle text-muted mb-1">ID: @x.AirportID</h6>
+							<h5 class="card-title mb-2">@x.Name</h5>
+							<ul class="list-unstyled small mb-0">
+								<li><strong>IATA:</strong> @(string.IsNullOrWhiteSpace(x.Iata) ? "-" : x.Iata)</li>
+								<li><strong>ICAO:</strong> @(string.IsNullOrWhiteSpace(x.Icao) ? "-" : x.Icao)</li>
+								<li><strong>Zaman Dilimi:</strong> @(string.IsNullOrWhiteSpace(x.Timezone) ? "-" : x.Timezone)</li>
+								<li><strong>DST:</strong> @(string.IsNullOrWhiteSpace(x.Dst) ? "-" : x.Dst)</li>
+								<li><strong>UTC Offset:</strong> @x.Utc_offset</li>
+								<li><strong>Rakım (m):</strong> @x.Elevation</li>
+								<li>
+									<strong>Koordinat:</strong>
+									@((x.Latitude ?? "-") + ", " + (x.Longitude ?? "-"))
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+
+		<form asp-controller="Airport" asp-action="ImportFromRapid" method="post" class="mt-3">
+			<button type="submit" class="btn btn-primary">RapidAPI'den Al ve Kaydet</button>
+		</form>
+	}
+</div>

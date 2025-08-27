@@ -1,0 +1,115 @@
+@model CQRS_MediatR_RentACar.UILayer.Models.FuelCalculatorViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "Yakıt Hesaplama";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="bg-secondary rounded p-4">
+                <h3 class="text-white mb-4">Yakıt Hesaplama</h3>
+
+                <form asp-action="Index" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-white-50">Başlangıç Lokasyonu</label>
+                            <select asp-for="OriginLocationId" class="form-select" asp-items="Model.Locations">
+                                <option value="">Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="OriginLocationId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-white-50">Varış Lokasyonu</label>
+                            <select asp-for="DestinationLocationId" class="form-select" asp-items="Model.Locations">
+                                <option value="">Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="DestinationLocationId" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label text-white-50">Tahmini Mesafe (km)</label>
+                            <div class="input-group">
+                                <input asp-for="ManualDistanceKm" type="number" class="form-control" placeholder="Örn: 120">
+                                <span class="input-group-text">km</span>
+                            </div>
+                            <div class="form-text text-white-50">Mesafe bilinmiyorsa boş bırakın.</div>
+                        </div>
+
+
+
+                        <div class="col-12">
+                            <label class="form-label text-white-50">Yakıt Türü</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="FuelType" value="gasoline" id="benzin">
+                                    <label class="form-check-label text-white-50" for="benzin">Benzin</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="FuelType" value="diesel" id="dizel">
+                                    <label class="form-check-label text-white-50" for="dizel">Dizel</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="FuelType" value="lpg" id="lpg">
+                                    <label class="form-check-label text-white-50" for="lpg">LPG</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" asp-for="IsRoundTrip" id="roundTrip">
+                                <label class="form-check-label text-white-50" for="roundTrip">
+                                    Gidiş-Dönüş Hesapla
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-light px-4">Hesapla</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(Model?.Message))
+            {
+                <div class="alert alert-warning mt-3">@Model.Message</div>
+            }
+
+            @if (Model?.EstimatedCost != null)
+            {
+                <div class="bg-dark rounded p-4 mt-4">
+                    <h5 class="text-white mb-3">Sonuçlar</h5>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="p-3 bg-secondary rounded text-center">
+                                <div class="text-white-50 small">Toplam Mesafe</div>
+                                <div class="display-6 text-white">@Model.TotalDistanceKm?.ToString("F1") km</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-secondary rounded text-center">
+                                <div class="text-white-50 small">Toplam Yakıt</div>
+                                <div class="display-6 text-white">@Model.TotalFuelLiters?.ToString("F1") L</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-secondary rounded text-center">
+                                <div class="text-white-50 small">Tahmini Maliyet</div>
+                                <div class="display-6 text-white">@Model.EstimatedCost?.ToString("F2") ₺</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-secondary rounded text-center">
+                                <div class="text-white-50 small">Süre (tahmini)</div>
+                                <div class="display-6 text-white">@Model.EstimatedTimeHours s</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 text-white-50 small">
+                        Not: Değerler ortalama tüketim ve fiyatlara göre tahmini olarak hesaplanır.
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

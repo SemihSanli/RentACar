@@ -1,0 +1,80 @@
+﻿@model List<GetAboutQueryResult>
+<div class="container-fluid overflow-hidden about py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="about-item">
+                    @foreach (var item in Model)
+                    {
+                        <div class="pb-5">
+                            <h1 class="display-5 text-capitalize"> <span class="text-primary">Hakkımızda</span></h1>
+                            <p class="mb-0">
+                                @item.AboutDescription
+                            </p>
+                        </div>
+                        
+                        <div class="row g-4 mb-4">
+                            <div class="col-lg-12">
+                                <div class="about-item-inner border p-4 rounded shadow-sm">
+                                    <div class="about-icon mb-4 text-center">
+                                        <img src="@item.AboutIconURL" class="img-fluid w-50 h-50" alt="Icon">
+                                    </div>
+                                    <h5 class="mb-3 text-center">@item.AboutLayerTitle</h5>
+                                    <p class="mb-0 text-center">@item.AboutLayerDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-item my-4">
+                            @item.AboutSubDescription
+                        </p>
+                        
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="text-center rounded bg-secondary p-4 shadow">
+                                    <h1 class="display-6 text-white">17</h1>
+                                    <h5 class="text-light mb-0">Yıllık Tecrübe</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="rounded p-3">
+                                    <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> @item.AboutArticle1</p>
+                                    <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> @item.AboutArticle2</p>
+                                    <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> @item.AboutArticle3</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-4 mt-4">
+                            <div class="col-lg-5 d-flex align-items-center">
+                                <a href="#" class="btn btn-primary rounded py-3 px-5 shadow-sm">Hakkımızda Daha Fazlası</a>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="d-flex align-items-center p-3 rounded bg-light">
+                                    <img src="@item.AboutCeoImageURL" class="img-fluid rounded-circle border border-4 border-secondary shadow-sm" style="width: 100px; height: 100px;" alt="Image">
+                                    <div class="ms-4">
+                                        <h4 class="mb-1">@item.AboutCeoFullName</h4>
+                                        <p class="mb-0 text-muted">@item.AboutCeoTitle</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="about-img">
+                    <div class="img-1">
+                        <img src="/Cental-1.0.0/Cental-1.0.0/img/about-img.jpg" class="img-fluid rounded h-100 w-100 shadow" alt="">
+                    </div>
+                    <div class="img-2">
+                        <img src="/Cental-1.0.0/Cental-1.0.0/img/about-img-1.jpg" class="img-fluid rounded w-100" alt="">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

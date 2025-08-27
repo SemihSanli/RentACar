@@ -1,0 +1,87 @@
+﻿@model GetSliderByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateSlider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid px-4 py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h5 mb-0">Slider Güncelle</h1>
+        <a class="btn btn-outline-secondary" href="/AdminSlider/Index/">
+            <i class="fas fa-arrow-left me-2"></i>Listeye Dön
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <form asp-action="UpdateSlider" asp-controller="AdminSlider" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="SliderID" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Slider Başlığı</label>
+                            <input asp-for="SliderTitle" class="form-control" placeholder="Slider Başlığı Girin" required />
+                            <span class="text-danger" asp-validation-for="SliderTitle"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Slider Alt Başlığı</label>
+                            <input asp-for="SliderSubTitle" class="form-control" placeholder="Slider Alt Başlığı Girin" required />
+                            <span class="text-danger" asp-validation-for="SliderSubTitle"></span>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Güncelle
+                            </button>
+                            <a href="/AdminSlider/Index/" class="btn btn-light">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Önizleme -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <strong>Slider Önizleme</strong>
+                </div>
+                <div class="card-body">
+                    <div class="p-3 bg-light rounded text-center" style="min-height:150px;">
+                        <h4 id="sliderTitlePreview" class="mb-2 text-muted">@Model.SliderTitle</h4>
+                        <p id="sliderSubTitlePreview" class="mb-0 text-muted">@Model.SliderSubTitle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function(){
+            const titleInput = document.getElementById('SliderTitle');
+            const subTitleInput = document.getElementById('SliderSubTitle');
+            const titlePreview = document.getElementById('sliderTitlePreview');
+            const subTitlePreview = document.getElementById('sliderSubTitlePreview');
+
+            function updatePreview(){
+                titlePreview.textContent = titleInput.value || "Başlık buraya gelecek";
+                subTitlePreview.textContent = subTitleInput.value || "Alt başlık buraya gelecek";
+            }
+
+            if(titleInput) titleInput.addEventListener('input', updatePreview);
+            if(subTitleInput) subTitleInput.addEventListener('input', updatePreview);
+            updatePreview();
+        })();
+    </script>
+}
+
+

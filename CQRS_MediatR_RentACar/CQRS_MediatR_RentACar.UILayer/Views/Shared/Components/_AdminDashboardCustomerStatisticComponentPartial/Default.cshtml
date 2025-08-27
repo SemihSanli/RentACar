@@ -1,0 +1,30 @@
+﻿@model List<GetLast4CarQueryResult>
+<div class="row">
+    <div class="col-xl-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between">
+                    <span>Başlıca Araçlarımız</span>
+                    <a href="/Car/Index" class="text-muted small">Tümünü Gör <i class="mdi mdi-chevron-right"></i></a>
+                </h4>
+
+                <div class="row">
+                    <!-- Araç Kartı -->
+                    @foreach(var item in Model){
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <img src="@item.CarImageURL" class="card-img-top" alt="Araç">
+                            <div class="card-body">
+                                    <h6 class="card-title mb-1"> @item.CarBrand @item.CarModel </h6>
+                                <p class="text-muted mb-1">@item.CarTransmission - @item.CarFuel</p>
+                                <p class="mb-2"><span class="badge badge-success">@item.CarYear</span></p>
+                                <a href="/Car/Details/1" class="btn btn-sm btn-primary">Detay</a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div> <!-- row end -->
+            </div>
+        </div>
+    </div>
+</div>

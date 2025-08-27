@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\CQRS_MediatR_RentACar\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.uilayer\\rapidapiservices\\fuelapi\\fuelrapidapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|solutionrelative:cqrs_mediatr_rentacar.uilayer\\rapidapiservices\\fuelapi\\fuelrapidapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.uilayer\\rapidapiservices\\airportapi\\airportrapidapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|solutionrelative:cqrs_mediatr_rentacar.uilayer\\rapidapiservices\\airportapi\\airportrapidapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.businesslayer\\services\\carrecommendationaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|solutionrelative:cqrs_mediatr_rentacar.businesslayer\\services\\carrecommendationaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.businesslayer\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|solutionrelative:cqrs_mediatr_rentacar.businesslayer\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.businesslayer\\services\\openaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|solutionrelative:cqrs_mediatr_rentacar.businesslayer\\services\\openaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.businesslayer\\cqrs_mediatr\\handlers\\createcarrecommendationaihandlers\\createcarrecommendationaicommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52830542-66D2-499F-AD94-542F23A1BEAB}|CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR_RentACar.BusinessLayer.csproj|solutionrelative:cqrs_mediatr_rentacar.businesslayer\\cqrs_mediatr\\handlers\\createcarrecommendationaihandlers\\createcarrecommendationaicommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|h:\\cqrs_mediatr_rentacar\\cqrs_mediatr_rentacar.uilayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3C252C9A-6037-43A9-B820-7843E748CFBB}|CQRS_MediatR_RentACar.UILayer\\CQRS_MediatR_RentACar.UILayer.csproj|solutionrelative:cqrs_mediatr_rentacar.uilayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FuelRapidApiClient.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\FuelAPI\\FuelRapidApiClient.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\FuelAPI\\FuelRapidApiClient.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\FuelAPI\\FuelRapidApiClient.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\FuelAPI\\FuelRapidApiClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:51:19.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AirportRapidApiClient.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\AirportAPI\\AirportRapidApiClient.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\AirportAPI\\AirportRapidApiClient.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\AirportAPI\\AirportRapidApiClient.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.UILayer\\RapidApiServices\\AirportAPI\\AirportRapidApiClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:51:10.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CarRecommendationAIService.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\CarRecommendationAIService.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\CarRecommendationAIService.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\CarRecommendationAIService.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\CarRecommendationAIService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:50:18.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OpenAIService.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\OpenAIService.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\OpenAIService.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\OpenAIService.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\OpenAIService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:49:58.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\EmailService.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\Services\\EmailService.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.BusinessLayer\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:49:54.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateCarRecommendationAICommandHandler.cs",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR\\Handlers\\CreateCarRecommendationAIHandlers\\CreateCarRecommendationAICommandHandler.cs",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR\\Handlers\\CreateCarRecommendationAIHandlers\\CreateCarRecommendationAICommandHandler.cs",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR\\Handlers\\CreateCarRecommendationAIHandlers\\CreateCarRecommendationAICommandHandler.cs",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.BusinessLayer\\CQRS_MediatR\\Handlers\\CreateCarRecommendationAIHandlers\\CreateCarRecommendationAICommandHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T15:49:47.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\appsettings.json",
+              "RelativeDocumentMoniker": "CQRS_MediatR_RentACar.UILayer\\appsettings.json",
+              "ToolTip": "H:\\CQRS_MediatR_RentACar\\CQRS_MediatR_RentACar.UILayer\\appsettings.json",
+              "RelativeToolTip": "CQRS_MediatR_RentACar.UILayer\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-27T15:48:52.039Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

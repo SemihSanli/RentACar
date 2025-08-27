@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Location" asp-action="ImportFromRapid" method="post">
+    <button type="submit" class="btn btn-primary">RapidAPI'den Al ve Kaydet</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+

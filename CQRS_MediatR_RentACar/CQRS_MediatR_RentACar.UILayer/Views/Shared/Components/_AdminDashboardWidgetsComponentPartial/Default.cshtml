@@ -1,0 +1,54 @@
+﻿<div class="row g-4">
+    <!-- Benzin -->
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(135deg, #FFC107, #FFB300);">
+            <div class="card-body text-center py-4">
+                <i class="mdi mdi-gas-station mdi-48px mb-3" style="color:#000;"></i>
+                <h5 class="text-dark mb-1 font-weight-bold">Benzin</h5>
+                <h2 class="text-dark font-weight-bold">
+                    @String.Format("{0:N2} TL", ViewBag.Gasoline)
+                </h2>
+                <small class="text-dark fst-italic">Türkiye Güncel Benzin Fiyatı</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dizel -->
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(135deg, #DC3545, #C82333);">
+            <div class="card-body text-center py-4">
+                <i class="mdi mdi-oil mdi-48px mb-3" style="color:#fff;"></i>
+                <h5 class="text-white mb-1 font-weight-bold">Dizel</h5>
+                <h2 class="text-white font-weight-bold">
+                    @String.Format("{0:N2} TL", ViewBag.Diesel)
+                </h2>
+                <small class="text-white fst-italic">Türkiye Güncel Dizel Fiyatı</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- LPG -->
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(135deg, #007BFF, #0069D9);">
+            <div class="card-body text-center py-4">
+                <i class="mdi mdi-fire mdi-48px mb-3" style="color:#fff;"></i>
+                <h5 class="text-white mb-1 font-weight-bold">LPG</h5>
+                <h2 class="text-white font-weight-bold">
+                    @String.Format("{0:N2} TL", ViewBag.Lpg)
+                </h2>
+                <small class="text-white fst-italic">Türkiye Güncel LPG Fiyatı</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Affiliate -->
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="card shadow-sm border-0 rounded-3" style="background: linear-gradient(135deg, #28A745, #218838);">
+            <div class="card-body text-center py-4">
+                <i class="mdi mdi-account-circle mdi-48px mb-3" style="color:#fff;"></i>
+                <h5 class="text-white mb-1 font-weight-bold">Araç Sayımız</h5>
+                <h2 class="text-white font-weight-bold">@ViewBag.CarCount</h2>
+            </div>
+        </div>
+    </div>
+</div>

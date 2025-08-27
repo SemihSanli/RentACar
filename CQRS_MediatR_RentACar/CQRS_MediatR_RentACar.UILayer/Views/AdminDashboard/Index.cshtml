@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@await Component.InvokeAsync("_AdminDashboardWidgetsComponentPartial")
+@await Component.InvokeAsync("_AdminDashboardChartComponentPartial")
+
+@await Component.InvokeAsync("_AdminDashboardCustomerStatisticComponentPartial")
+
+
+<style>
+    body {
+        background: radial-gradient(1000px 700px at 10% 0%, rgba(75,63,149,.10), transparent 60%), radial-gradient(900px 600px at 100% 20%, rgba(106,89,200,.10), transparent 60%), linear-gradient(180deg, #E7DFEE 0%, #C5D6E6 50%, #79B1D3 100%);
+        color: #0F172A;
+        min-height: 100vh;
+    }
+
+</style>
+

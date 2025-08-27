@@ -1,0 +1,385 @@
+﻿@model List<GetAboutQueryResult>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    :root {
+        --bg-top: #E7DFEE; /* üst arka plan */
+        --bg-mid: #C5D6E6; /* orta arka plan */
+        --bg-bot: #79B1D3; /* alt arka plan */
+        --ink: #0F172A; /* birincil metin */
+        --ink-2: #475569; /* ikincil metin */
+        --line: #E2E8F0; /* ayıraç/çizgi */
+        --violet: #4B3F95; /* ikon/vurgu moru */
+        --violet-2: #6A59C8; /* açık mor */
+        --pink: #FF4FAE; /* rozet/CTA pembe */
+        --glass: rgba(255,255,255,.55);
+        --glass-2: rgba(255,255,255,.30);
+        --shadow: 0 16px 60px rgba(16,24,40,.15);
+    }
+
+    /* Sayfa arka planı + kılavuz çizgiler */
+    .about-viewport {
+        min-height: 100vh;
+        background: radial-gradient(1000px 700px at 10% 0%, rgba(75,63,149,.10), transparent 60%), radial-gradient(900px 600px at 100% 20%, rgba(106,89,200,.10), transparent 60%), linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+        color: var(--ink);
+        position: relative;
+        overflow-x: hidden;
+        isolation: isolate;
+    }
+
+    .grid-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: .06;
+        z-index: 0;
+        background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 56px 56px, 56px 56px;
+        mask-image: radial-gradient(1200px 900px at 50% 20%, #000, transparent);
+    }
+
+    /* Başlık */
+    .about-header {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 56px 0 20px;
+    }
+
+    .about-title {
+        font-weight: 900;
+        letter-spacing: .6px;
+        margin: 0;
+        font-size: clamp(28px,3.8vw,48px);
+        background: linear-gradient(90deg, var(--violet), var(--violet-2), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 8px 40px rgba(75,63,149,.35);
+    }
+
+    .about-sub {
+        color: var(--ink-2);
+        margin-top: 8px;
+    }
+
+    /* Takma sekmeler */
+    .about-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        padding: 12px 0;
+        backdrop-filter: blur(8px);
+        background: linear-gradient(180deg, var(--glass), var(--glass-2));
+        border-top: 1px solid rgba(255,255,255,.35);
+        border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #fff;
+        background: linear-gradient(90deg, var(--violet), var(--violet-2));
+        border: 1px solid rgba(255,255,255,.35);
+        box-shadow: 0 10px 22px rgba(75,63,149,.25);
+        transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+        .pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(106,89,200,.30);
+        }
+
+    /* Tam sayfa içerik akışı (kart yok) */
+    .about-stream {
+        position: relative;
+        z-index: 1;
+        width: min(1320px, 94%);
+        margin: 0 auto;
+        padding: 28px 0 96px;
+    }
+
+    .row-band {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 26px 0;
+        border: 1px solid rgba(255,255,255,.45);
+        background: linear-gradient(180deg, var(--glass), var(--glass-2));
+        backdrop-filter: blur(6px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+    }
+
+    .row-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    @@media (min-width: 992px) {
+        .row-inner
+
+    {
+        grid-template-columns: 5fr 7fr;
+        min-height: 420px;
+    }
+
+    .row-band:nth-child(even) .band-media {
+        order: 2;
+    }
+
+    .row-band:nth-child(even) .band-content {
+        order: 1;
+    }
+
+    }
+
+    /* Görsel */
+    .band-media {
+        position: relative;
+        min-height: 260px;
+        background: rgba(106,89,200,.10);
+    }
+
+        .band-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: transform .6s ease;
+            filter: saturate(1.05) contrast(1.02);
+        }
+
+    .row-band:hover .band-media img {
+        transform: scale(1.06);
+    }
+
+    .tag {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        padding: 8px 14px;
+        border-radius: 14px;
+        background: linear-gradient(90deg, var(--violet), var(--pink));
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: .3px;
+        border: 1px solid rgba(255,255,255,.55);
+        box-shadow: 0 12px 26px rgba(106,89,200,.35);
+    }
+
+    /* İçerik */
+    .band-content {
+        padding: 26px 18px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    @@media (min-width: 992px) {
+        .band-content
+
+    {
+        padding: 34px 28px;
+    }
+
+    }
+
+    .lead {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ink);
+    }
+
+    .desc {
+        color: var(--ink-2);
+    }
+
+    .sub {
+        color: #64748B;
+    }
+
+    .bullets {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .bullets li {
+            display: flex;
+            gap: 10px;
+            color: var(--ink);
+            font-size: 14px;
+        }
+
+    .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, var(--violet-2), var(--pink));
+        margin-top: 6px;
+        box-shadow: 0 0 0 3px rgba(106,89,200,.18);
+    }
+
+    /* CEO bilgisi */
+    .meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-top: 14px;
+        margin-top: auto;
+        border-top: 1px dashed var(--line);
+    }
+
+        .meta img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,.55);
+            box-shadow: 0 8px 20px rgba(15,23,42,.15);
+        }
+
+        .meta h6 {
+            margin: 0;
+            font-weight: 800;
+            color: var(--violet);
+        }
+
+        .meta small {
+            color: var(--ink-2);
+        }
+
+    /* Aksiyonlar */
+    .actions {
+        display: flex;
+        gap: 10px;
+        padding: 16px 0 8px;
+    }
+
+    .btn-ghost {
+        border: none;
+        border-radius: 999px;
+        padding: 10px 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn-edit {
+        background: linear-gradient(90deg, var(--violet), var(--violet-2));
+        color: #fff;
+        box-shadow: 0 10px 22px rgba(75,63,149,.35);
+    }
+
+        .btn-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(106,89,200,.35);
+        }
+
+    .btn-delete {
+        background: linear-gradient(90deg, #ef4444, #b91c1c);
+        color: #fff;
+        box-shadow: 0 10px 22px rgba(185,28,28,.30);
+    }
+
+        .btn-delete:hover {
+            transform: translateY(-2px);
+        }
+
+    /* Başlıktaki küçük sekmeler hizalaması */
+    .toolbar-inner {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+</style>
+
+<div class="about-viewport">
+    <div class="grid-lines"></div>
+
+    <div class="about-header">
+        <h2 class="about-title">Hakkımızda</h2>
+        <div class="about-sub">Hakkımda içeriklerini modern ve tam sayfa akışta görüntüleyin.</div>
+    </div>
+
+    <div class="about-toolbar">
+        <div class="toolbar-inner">
+            <a class="pill" href="javascript:void(0)"><i class="fa fa-bolt"></i> Öne Çıkanlar</a>
+            <a class="pill" href="javascript:void(0)"><i class="fa fa-layer-group"></i> Tüm İçerikler</a>
+            <a class="pill" href="javascript:void(0)"><i class="fa fa-heart"></i> Favoriler</a>
+        </div>
+    </div>
+
+    <div class="about-stream">
+        @foreach (var item in Model)
+        {
+            <section class="row-band">
+                <div class="row-inner">
+                    <figure class="band-media">
+                        <img src="@item.AboutBigImageURL" alt="About Image" />
+                        <figcaption class="tag">@item.AboutLayerTitle</figcaption>
+                    </figure>
+
+                    <div class="band-content">
+                        <p class="lead">@item.AboutLayerDescription</p>
+                        <p class="desc">@item.AboutDescription</p>
+                        <p class="sub">@item.AboutSubDescription</p>
+
+                        <ul class="bullets">
+                            @if (!string.IsNullOrEmpty(item.AboutArticle1))
+                            {
+                                <li><span class="dot"></span>@item.AboutArticle1</li>
+                            }
+                            @if (!string.IsNullOrEmpty(item.AboutArticle2))
+                            {
+                                <li><span class="dot"></span>@item.AboutArticle2</li>
+                            }
+                            @if (!string.IsNullOrEmpty(item.AboutArticle3))
+                            {
+                                <li><span class="dot"></span>@item.AboutArticle3</li>
+                            }
+                        </ul>
+
+                        @if (!string.IsNullOrEmpty(item.AboutIconURL))
+                        {
+                            <div style="margin:10px 0;">
+                                <img src="@item.AboutIconURL" alt="Icon" width="42" height="42" style="object-fit:contain; filter: drop-shadow(0 6px 16px rgba(75,63,149,.25));" />
+                            </div>
+                        }
+
+                        <div class="meta">
+                            <img src="@item.AboutCeoImageURL" alt="CEO" />
+                            <div>
+                                <h6>@item.AboutCeoFullName</h6>
+                                <small>@item.AboutCeoTitle</small>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <a href="/AdminAbout/UpdateAbout/@item.AboutID" class="btn-ghost btn-edit">
+                                <i class="fa fa-edit"></i> Düzenle
+                            </a>
+                            <a href="/AdminAbout/DeleteAbout/@item.AboutID)" class="btn-ghost btn-delete">
+                                <i class="fa fa-trash"></i> Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+</div>

@@ -1,0 +1,123 @@
+﻿@using CQRS_MediatR_RentACar.BusinessLayer.CQRS_MediatR.Results.CarResults
+@model List<GetCarQueryResult>
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-8">
+            <div class="bg-secondary rounded p-4">
+                <h4 class="text-white mb-4">Araç Markası Seçiniz</h4>
+                <form asp-controller="BrowseCar" asp-action="Index" method="post">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            @Html.DropDownList(
+                                     "selectedBrand",
+                                     (SelectList)ViewBag.Brands,
+                                     "Select a Brand",
+                                     new { @class = "form-control" })
+                        </div>
+                        <div class="col-12">
+                            @Html.DropDownList(
+                                     "selectedAirportId",
+                                     (SelectList)ViewBag.Airports,
+                                     "Select an Airport",
+                                     new { @class = "form-control" })
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-light w-100 py-2" type="submit">Show Cars</button>
+                        </div>
+                    </div>
+                </form>
+                @if (ViewBag.SelectedBrand != null)
+                {
+                    <div class="mt-3 text-white-50">
+                        Selected: <strong class="text-white">@ViewBag.SelectedBrand</strong>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info mb-0">
+                    Araç Bulunamadı, Lütfen Bir Marka Seçiniz
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var car in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <img src="@(string.IsNullOrWhiteSpace(car.CarImageURL) ? "/img/placeholder-car.jpg" : car.CarImageURL)"
+                                 class="card-img-top" alt="@($"{car.CarBrand} {car.CarModel}")" />
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-1">@car.CarBrand @car.CarModel</h5>
+                            <div class="text-muted small mb-3">
+                                <span class="me-2">Year: @car.CarYear</span>
+                                <span class="me-2">KM: @car.CarKM</span>
+                            </div>
+
+                            <div class="row g-2 small text-muted mb-3">
+                                <div class="col-6">
+                                    <span class="d-block">Transmission:</span>
+                                    <strong class="text-body">@car.CarTransmission</strong>
+                                </div>
+                                <div class="col-6">
+                                    <span class="d-block">Fuel:</span>
+                                    <strong class="text-body">@car.CarFuel</strong>
+                                </div>
+                                <div class="col-6">
+                                    <span class="d-block">Seats:</span>
+                                    <strong class="text-body">@car.CarSeat</strong>
+                                </div>
+                                <div class="col-6">
+                                    <span class="d-block">Review:</span>
+                                    <strong class="text-body">@car.CarReview</strong>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto d-flex align-items-center justify-content-between">
+                                <div class="h5 mb-0 text-primary">$@car.CarPrice</div>
+                                <a class="btn btn-outline-primary btn-sm" href="/Fuel/Index/@car.CarID">Yakıt Hesapla</a>
+                            </div>
+                            <form asp-controller="BrowseCar" asp-action="Book" method="post" class="mt-3">
+
+                                <input type="hidden" name="carId" value="@car.CarID" />
+                                <input type="hidden" name="selectedBrand" value="@ViewBag.SelectedBrand" />
+                                <input type="hidden" name="selectedAirportId" value="@(ViewBag.SelectedAirportId ?? ViewBag.SelectedAirportID)" />
+
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <label class="form-label small text-muted">Pick Up</label>
+                                        <input class="form-control" type="date" name="pickUpDate" min="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small text-muted">Drop Off</label>
+                                        <input class="form-control" type="date" name="dropOffDate" min="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+                                    </div>
+                                    <div class="col-12 d-grid">
+                                        <button type="submit"  class="btn btn-primary btn-sm">Kirala</button>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+  
+</div>

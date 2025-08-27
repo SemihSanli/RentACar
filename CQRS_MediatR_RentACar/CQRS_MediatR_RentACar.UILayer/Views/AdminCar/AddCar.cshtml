@@ -1,0 +1,189 @@
+﻿@model CreateCarCommand
+@{
+    ViewData["Title"] = "AddCar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<style>
+	:root {
+		--c1: #79B1D3; /* accent */
+		--c2: #E7DFEE; /* soft */
+		--c3: #C5D6E6; /* soft */
+		--c4: #0F172A; /* primary dark */
+		--c5: #475569; /* secondary */
+	}
+
+	body {
+		background: linear-gradient(180deg, var(--c2) 0%, var(--c3) 40%, var(--c1) 100%);
+	}
+
+	.heading-band {
+		background: linear-gradient(90deg, var(--c4), var(--c5));
+		border-radius: 14px;
+		color: #fff;
+	}
+
+	.btn-primary {
+		background: var(--c1);
+		border-color: var(--c1);
+		color: var(--c4);
+		font-weight: 600;
+	}
+
+		.btn-primary:hover {
+			filter: brightness(0.95);
+		}
+
+	.card {
+		border: 1px solid rgba(15,23,42,0.06);
+	}
+
+	.form-label {
+		color: var(--c4);
+		font-weight: 600;
+	}
+</style>
+
+<div class="container-fluid px-4 py-4">
+	<div class="heading-band p-4 mb-4 d-flex justify-content-between align-items-center">
+		<div>
+			<h1 class="h4 mb-1"><i class="fas fa-plus me-2"></i>Yeni Araç Ekle</h1>
+			<p class="mb-0 opacity-75">Araç bilgilerini eksiksiz doldurun ve kaydedin</p>
+		</div>
+		<a class="btn btn-light" href="@Url.Action("Index","AdminCar")"><i class="fas fa-arrow-left me-2"></i>Listeye Dön</a>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="card shadow-sm mb-4">
+				<div class="card-body">
+					<form asp-action="AddCar" asp-controller="AdminCar" method="post" novalidate>
+						<div class="row g-3">
+							<div class="col-md-6">
+								<label class="form-label">Marka</label>
+								<input name="CarBrand" class="form-control" placeholder="Örn. BMW" required />
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Model</label>
+								<input name="CarModel" class="form-control" placeholder="Örn. 320i" required />
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label">Fiyat (₺/gün)</label>
+								<input name="CarPrice" type="number" step="0.01" min="0" class="form-control" placeholder="Örn. 1500" required />
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Puan (0-5)</label>
+								<input name="CarReview" type="number" step="0.1" min="0" max="5" class="form-control" placeholder="Örn. 4.5" />
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label">Yakıt Türü</label>
+								<select name="CarFuel" class="form-select" required>
+									<option value="">Seçiniz</option>
+									<option>Benzin</option>
+									<option>Dizel</option>
+									<option>LPG</option>
+									<option>Elektrik</option>
+									<option>Hibrit</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Vites</label>
+								<select name="CarTransmission" class="form-select" required>
+									<option value="">Seçiniz</option>
+									<option>Otomatik</option>
+									<option>Manuel</option>
+									<option>Yarı Otomatik</option>
+								</select>
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label">Yıl</label>
+								<input name="CarYear" class="form-control" placeholder="Örn. 2022" />
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">KM</label>
+								<input name="CarKM" class="form-control" placeholder="Örn. 45.000" />
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label">Koltuk</label>
+								<input name="CarSeat" class="form-control" placeholder="Örn. 5" />
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Otomatik/Manuel</label>
+								<select name="IsAutoOrManual" class="form-select">
+									<option>Otomatik</option>
+									<option>Manuel</option>
+								</select>
+							</div>
+
+							<div class="col-12">
+								<label class="form-label">Görsel URL</label>
+								<input id="imgUrl" name="CarImageURL" class="form-control" placeholder="https://..." />
+								<small class="text-muted">Geçerli bir URL girerseniz sağda önizleme görünecek.</small>
+							</div>
+						</div>
+
+						<hr class="my-4" />
+						<div class="d-flex gap-2">
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-save me-2"></i>Kaydet
+							</button>
+							<a href="@Url.Action("Index","AdminCar")" class="btn btn-outline-secondary">
+								İptal
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Görsel önizleme -->
+		<div class="col-lg-4">
+			<div class="card shadow-sm">
+				<div class="card-header" style="background:#ffffff;">
+					<strong>Görsel Önizleme</strong>
+				</div>
+				<div class="card-body">
+					<div class="ratio ratio-4x3 border rounded d-flex align-items-center justify-content-center" style="background:#f8fafc">
+						<img id="previewImg" src="" alt="Önizleme" style="max-width:100%; max-height:100%; display:none; object-fit:cover;" />
+						<div id="previewPlaceholder" class="text-muted"><i class="fas fa-image me-2"></i>Henüz görsel yok</div>
+					</div>
+					<div class="mt-3 small text-muted">
+						Yüksek çözünürlüklü, yatay görseller önerilir.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		(function(){
+			const urlInput = document.getElementById('imgUrl');
+			const img = document.getElementById('previewImg');
+			const ph = document.getElementById('previewPlaceholder');
+
+			function updatePreview(){
+				const v = (urlInput.value || '').trim();
+				if(!v){
+					img.style.display = 'none';
+					ph.style.display = 'block';
+					img.src = '';
+					return;
+				}
+				img.src = v;
+				img.onload = () => { img.style.display='block'; ph.style.display='none'; };
+				img.onerror = () => { img.style.display='none'; ph.style.display='block'; };
+			}
+			urlInput.addEventListener('input', updatePreview);
+			updatePreview();
+		})();
+	</script>
+}
+

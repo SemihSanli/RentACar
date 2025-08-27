@@ -1,0 +1,47 @@
+﻿@model List<GetLast5BookingWithCarNameQueryResult>
+
+<div class="row">
+    <div class="col-xl-12 grid-margin stretch-card">
+        <div class="card shadow-lg border-0">
+            <div class="card-body overflow-auto">
+                <h4 class="card-title text-primary">Booking History 🚗</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead style="background: linear-gradient(90deg, #6a11cb, #2575fc); color:white;">
+                            <tr>
+                                <th>Model</th>
+                                <th>Brand</th>
+                                <th>Pick-Up Date</th>
+                                <th>Drop-Off Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr style="background-color:#e0f7fa;">
+                                    <td>@x.CarModel</td>
+                                    <td>@x.CarBrand</td>
+                                    <td>@x.PickUpDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@x.DropOffDate.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #b2ebf2 !important;
+        transform: scale(1.01);
+        transition: all 0.2s;
+    }
+
+    table th, table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>

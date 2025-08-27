@@ -1,0 +1,464 @@
+﻿@model List<GetCarQueryResult>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container-fluid px-4 py-3">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1 text-dark">
+                <i class="fas fa-car me-2 text-primary"></i>Araç Listesi
+            </h1>
+            <p class="text-muted mb-0">Sistemdeki tüm araçlar</p>
+        </div>
+        <div class="d-flex gap-2">
+            <div class="input-group" style="width: 300px;">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="fas fa-search text-muted"></i>
+                </span>
+                <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Araç ara...">
+            </div>
+            <select class="form-select" id="brandFilter" style="width: 150px;">
+                <option value="">Tüm Markalar</option>
+                @foreach (var brand in Model.Select(c => c.CarBrand).Distinct().OrderBy(b => b))
+                {
+                    <option value="@brand">@brand</option>
+                }
+            </select>
+            <a class="btn btn-add" href="/AdminCar/AddCar/">
+                <i class="fas fa-plus me-2"></i>Araç Ekle
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Summary -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-3">
+                    <div class="text-primary mb-2">
+                        <i class="fas fa-car fa-2x"></i>
+                    </div>
+                    <h4 class="mb-1 text-dark">@Model.Count()</h4>
+                    <small class="text-muted">Toplam Araç</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-3">
+                    <div class="text-success mb-2">
+                        <i class="fas fa-star fa-2x"></i>
+                    </div>
+                    <h4 class="mb-1 text-dark">@Model.Average(c => c.CarReview).ToString("F1")</h4>
+                    <small class="text-muted">Ortalama Puan</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-3">
+                    <div class="text-info mb-2">
+                        <i class="fas fa-gas-pump fa-2x"></i>
+                    </div>
+                    <h4 class="mb-1 text-dark">@Model.Select(c => c.CarFuel).Distinct().Count()</h4>
+                    <small class="text-muted">Farklı Yakıt Türü</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-3">
+                    <div class="text-warning mb-2">
+                        <i class="fas fa-lira-sign fa-2x"></i>
+                    </div>
+                    <h4 class="mb-1 text-dark">₺@Model.Average(c => c.CarPrice).ToString("N0")</h4>
+                    <small class="text-muted">Ort. Günlük  Fiyat</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cars Grid -->
+    <div class="row g-4" id="carsGrid">
+        @foreach (var car in Model)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6 car-card" 
+                 data-brand="@car.CarBrand?.ToLower()" 
+                 data-search="@($"{car.CarBrand} {car.CarModel}".ToLower())">
+                <div class="card h-100 border-0 shadow-sm car-item">
+                    <!-- Car Image -->
+                    <div class="car-image-container position-relative">
+                        @if (!string.IsNullOrEmpty(car.CarImageURL))
+                        {
+                            <img src="@car.CarImageURL" class="card-img-top car-image" alt="@car.CarBrand @car.CarModel">
+                        }
+                        else
+                        {
+                            <div class="car-placeholder d-flex align-items-center justify-content-center">
+                                <i class="fas fa-car fa-3x text-muted"></i>
+                            </div>
+                        }
+                        
+                        <!-- Review Badge -->
+                        <div class="position-absolute top-0 start-0 m-2">
+                            <div class="review-badge">
+                                <i class="fas fa-star text-warning me-1"></i>
+                                <span class="fw-bold">@car.CarReview.ToString("F1")</span>
+                            </div>
+                        </div>
+
+                        <!-- Transmission Badge -->
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-info">
+                                <i class="fas fa-cog me-1"></i>@car.IsAutoOrManual
+                            </span>
+                        </div>
+
+                        <!-- Price Badge -->
+                        <div class="position-absolute bottom-0 start-0 m-2">
+                            <div class="price-badge">
+                                <span class="h6 text-white mb-0 fw-bold">₺@car.CarPrice.ToString("N0")</span>
+                                <small class="text-white-50 d-block">/gün</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car Details -->
+                    <div class="card-body p-3">
+                        <!-- Brand & Model -->
+                        <div class="mb-3">
+                            <h6 class="card-title mb-1 text-dark fw-bold">@car.CarBrand</h6>
+                            <p class="card-text text-muted mb-0 small">@car.CarModel</p>
+                        </div>
+
+                        <!-- Car Specs Grid -->
+                        <div class="specs-grid mb-3">
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-calendar text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">Yıl</small>
+                                    <span class="fw-semibold">@car.CarYear</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-gas-pump text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">Yakıt</small>
+                                    <span class="fw-semibold">@car.CarFuel</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-cog text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">Vites</small>
+                                    <span class="fw-semibold">@car.CarTransmission</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-users text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">Koltuk</small>
+                                    <span class="fw-semibold">@car.CarSeat</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-road text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">KM</small>
+                                    <span class="fw-semibold">@car.CarKM</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-tachometer-alt text-primary"></i>
+                                </div>
+                                <div class="spec-content">
+                                    <small class="text-muted d-block">Tip</small>
+                                    <span class="fw-semibold">@car.IsAutoOrManual</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2">
+                            <i class="fas fa-eye me-1"></i>
+                            <a href="/AdminCar/UpdateCar/@car.CarID" class="btn btn-sm btn-warning rounded-pill shadow-sm px-3">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <style>
+            :root {
+                --c1: #79B1D3; /* accent */
+                --c2: #E7DFEE; /* soft */
+                --c3: #C5D6E6; /* soft */
+                --c4: #0F172A; /* primary dark */
+                --c5: #475569; /* secondary */
+            }
+
+            body {
+                background: linear-gradient(180deg, var(--c2) 0%, var(--c3) 40%, var(--c1) 100%);
+            }
+
+            .btn-add {
+                background: var(--c1);
+                color: var(--c4);
+                border: 0;
+                font-weight: 600;
+            }
+
+                .btn-add:hover {
+                    filter: brightness(0.95);
+                }
+
+            .card {
+                border: 1px solid rgba(15,23,42,0.06);
+            }
+            .car-card {
+                transition: transform 0.2s ease-in-out;
+            }
+
+                .car-card:hover {
+                    transform: translateY(-5px);
+                }
+
+            .car-item {
+                transition: box-shadow 0.2s ease-in-out;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .car-card:hover .car-item {
+                box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+            }
+
+            .car-image-container {
+                height: 220px;
+                overflow: hidden;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                position: relative;
+            }
+
+            .car-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .car-card:hover .car-image {
+                transform: scale(1.05);
+            }
+
+            .car-placeholder {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                color: #6c757d;
+            }
+
+            .review-badge {
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                backdrop-filter: blur(10px);
+            }
+
+            .price-badge {
+                background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+                padding: 8px 12px;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .specs-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .spec-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px;
+                background: #f8f9fa;
+                border-radius: 8px;
+                transition: background-color 0.2s ease;
+            }
+
+                .spec-item:hover {
+                    background: #e9ecef;
+                }
+
+            .spec-icon {
+                width: 24px;
+                text-align: center;
+                color: #0d6efd;
+            }
+
+            .spec-content {
+                flex: 1;
+            }
+
+                .spec-content small {
+                    font-size: 0.75rem;
+                    line-height: 1;
+                }
+
+                .spec-content .fw-semibold {
+                    font-size: 0.85rem;
+                    color: #495057;
+                }
+
+            .badge {
+                font-weight: 500;
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+            }
+
+                .card-body .btn {
+                    margin-top: auto;
+                    border-radius: 8px;
+                    font-weight: 500;
+                }
+
+            /* Responsive adjustments */
+            @@media (max-width: 768px) {
+                .car-image-container {
+                    height: 180px;
+                }
+
+                .specs-grid {
+                    grid-template-columns: 1fr;
+                    gap: 8px;
+                }
+
+                .col-md-6 {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            @@media (max-width: 576px) {
+                .specs-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            body {
+                background: radial-gradient(1000px 700px at 10% 0%, rgba(75,63,149,.10), transparent 60%), radial-gradient(900px 600px at 100% 20%, rgba(106,89,200,.10), transparent 60%), linear-gradient(180deg, #E7DFEE 0%, #C5D6E6 50%, #79B1D3 100%);
+                color: #0F172A;
+                min-height: 100vh;
+            }
+
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('searchInput');
+                const brandFilter = document.getElementById('brandFilter');
+                const carsGrid = document.getElementById('carsGrid');
+                const noResults = document.getElementById('noResults');
+
+                // Search functionality
+                searchInput.addEventListener('input', filterCars);
+                brandFilter.addEventListener('change', filterCars);
+
+                function filterCars() {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const selectedBrand = brandFilter.value.toLowerCase();
+                    const carCards = document.querySelectorAll('.car-card');
+                    let visibleCount = 0;
+
+                    carCards.forEach(card => {
+                        const searchData = card.dataset.search;
+                        const brand = card.dataset.brand;
+
+                        const matchesSearch = searchData.includes(searchTerm);
+                        const matchesBrand = !selectedBrand || brand === selectedBrand;
+
+                        if (matchesSearch && matchesBrand) {
+                            card.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Show/hide no results message
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                        carsGrid.style.display = 'none';
+                    } else {
+                        noResults.style.display = 'none';
+                        carsGrid.style.display = 'flex';
+                    }
+                }
+            });
+
+            function viewCarDetails(carId) {
+                // You can implement this to show detailed car information
+                // For now, just show a simple alert
+                alert(`Araç ID: ${carId} detayları görüntüleniyor...`);
+
+                // Or you can load details via AJAX and show in modal
+                // const modal = new bootstrap.Modal(document.getElementById('carDetailsModal'));
+                // modal.show();
+            }
+        </script>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="text-center py-5" style="display: none;">
+        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+        <h5 class="text-muted">Araç bulunamadı</h5>
+        <p class="text-muted">Arama kriterlerinizi değiştirmeyi deneyin.</p>
+    </div>
+</div>
+
+<!-- Car Details Modal -->
+<div class="modal fade" id="carDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Araç Detayları</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="carDetailsContent">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+

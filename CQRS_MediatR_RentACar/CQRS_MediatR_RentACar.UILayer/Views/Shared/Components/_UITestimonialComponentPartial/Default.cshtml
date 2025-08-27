@@ -1,0 +1,70 @@
+﻿@model List<GetTestimonialQueryResult>
+<div class="container-fluid testimonial pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Hakkımızda<span class="text-primary"> Ne Dediler ?</span></h1>
+            <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut amet nemo expedita asperiores commodi accusantium at cum harum, excepturi, quia tempora cupiditate! Adipisci facilis modi quisquam quia distinctio,
+            </p>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            @foreach(var item in Model){
+            <div class="testimonial-item">
+                <div class="testimonial-quote">
+                    <i class="fa fa-quote-right fa-2x"></i>
+                </div>
+                <div class="testimonial-inner p-4">
+                    <img src="@item.TestimonialImageURL" class="img-fluid" alt="">
+                    <div class="ms-4">
+                        <h4>@item.TestimonialName</h4>
+                        <p>@item.TestimonialTitle</p>
+
+                        <div class="d-flex text-warning">
+                            @using System.Globalization
+                                @{
+
+                                    var ratingText = item.TestimonialReviewScore; 
+                                    decimal rating = 0m;
+
+                                    var normalized = (ratingText ?? "").Trim();
+                                    if (normalized.Contains(',')) normalized = normalized.Replace(',', '.');
+
+                                    if (!decimal.TryParse(normalized, NumberStyles.Number, CultureInfo.InvariantCulture, out rating))
+                                    {
+                                        decimal.TryParse(ratingText, NumberStyles.Number, CultureInfo.CurrentCulture, out rating);
+                                    }
+
+                                    if (rating < 0m) rating = 0m;
+                                    else if (rating > 5m) rating = 5m;
+                                }
+
+                                <div class="d-flex text-warning">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        decimal step = i;
+                                        if (rating >= step)
+                                        {
+                                            <i class="fas fa-star me-1"></i>
+                                        }
+                                        else if (rating >= step - 0.5m)
+                                        {
+                                            <i class="fas fa-star-half-alt me-1"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="far fa-star me-1"></i>
+                                        }
+                                    }
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="border-top rounded-bottom p-4">
+                    <p class="mb-0">@item.TestimonialComment.</p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

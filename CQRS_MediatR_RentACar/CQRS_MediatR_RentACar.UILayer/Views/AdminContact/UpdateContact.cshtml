@@ -1,0 +1,67 @@
+﻿@model GetContactByIdQueryResult
+
+
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "İletişim Güncelle";
+}
+
+<div class="container-fluid px-4 py-4">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h1 class="h5 mb-0">İletişim Güncelle (ID: @Model.ContactID)</h1>
+		<a class="btn btn-outline-secondary" href="/AdminContact/Index/">
+			<i class="fas fa-arrow-left me-2"></i>Listeye Dön
+		</a>
+	</div>
+
+	<div class="card shadow-sm">
+		<div class="card-body">
+			<form asp-action="UpdateContact" asp-controller="AdminContact" method="post" novalidate>
+				@Html.AntiForgeryToken()
+				<input type="hidden" asp-for="ContactID" />
+
+				<div class="mb-3">
+					<label class="form-label">Adres</label>
+					<textarea asp-for="Address" class="form-control" rows="3" placeholder="Adres bilgisi" required></textarea>
+					<span class="text-danger" asp-validation-for="Address"></span>
+				</div>
+
+				<div class="row g-3">
+					<div class="col-md-6">
+						<label class="form-label">E-Posta</label>
+						<input asp-for="MailUs" type="email" class="form-control" placeholder="ornek@site.com" required />
+						<span class="text-danger" asp-validation-for="MailUs"></span>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">Telefon</label>
+						<input asp-for="Phone" class="form-control" placeholder="+90 5xx xxx xx xx" required />
+						<span class="text-danger" asp-validation-for="Phone"></span>
+					</div>
+				</div>
+
+				<div class="mt-3">
+					<label class="form-label">Web Sitesi</label>
+					<input asp-for="Webside" type="url" class="form-control" placeholder="https://ornek.com" />
+					<span class="text-danger" asp-validation-for="Webside"></span>
+					@if (!string.IsNullOrWhiteSpace(Model.Webside))
+					{
+						<div class="form-text">
+							Önizleme: <a href="@Model.Webside" target="_blank" rel="noopener">@Model.Webside</a>
+						</div>
+					}
+				</div>
+
+				<hr class="my-4" />
+
+				<div class="d-flex gap-2">
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save me-2"></i>Kaydet
+					</button>
+					<a href="/AdminContact/Index/" class="btn btn-light">İptal</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
