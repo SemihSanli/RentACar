@@ -165,6 +165,14 @@ Bu proje; **AI destekli**, **katmanlı mimari**, **Clean Code**, **SOLID prensip
 
 ## 💡 Ekran Görüntüleri & Demo
 
+
+
+
+https://github.com/user-attachments/assets/3b86d656-d132-4ea3-b813-eddf3cc4fb12
+
+
+
+
 <img width="2537" height="913" alt="Ekran görüntüsü 2025-08-27 180612" src="https://github.com/user-attachments/assets/aa3f86e2-d726-46bf-9be6-1467719d7c1a" />
 <img width="2528" height="1199" alt="Ekran görüntüsü 2025-08-27 180755" src="https://github.com/user-attachments/assets/17596da0-6790-41c4-a369-19936a6e6738" />
 <img width="2543" height="1210" alt="Ekran görüntüsü 2025-08-27 180807" src="https://github.com/user-attachments/assets/d56fa0cb-5c3c-4690-9065-5b7a62abd247" />
